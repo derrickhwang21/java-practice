@@ -6,14 +6,14 @@ public class Main {
 
         int dogCount = 1;
 
-
-
         System.out.println("I own " + dogCount + " " + pluralize("dog", dogCount) + ".");
         int catCount =2;
         System.out.println("I own " + catCount + " " + pluralize("cat", catCount)+ ".");
 
         int turtleCount = 0;
         System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount)+ ".");
+
+        flipNHeads(1);
 
     }
 
@@ -25,5 +25,21 @@ public class Main {
             return (firstParam + "s");
         }
 
+    }
+
+    public static void flipNHeads(int numberOfTimesFlipped) {
+        for (int i = 0; i < numberOfTimesFlipped; i++) {
+            int flipped = numberOfTimesFlipped;
+            int tails = 0;
+            int heads =0;
+            if (Math.random() < 0.5) {
+                tails++;
+                System.out.println("tails");
+            } else {
+                heads++;
+                System.out.println("heads");
+            }
+            System.out.println("It took " + (tails + heads) + " to flip " + heads + " head in a row.");
+        }
     }
 }
