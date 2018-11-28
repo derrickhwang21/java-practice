@@ -5,8 +5,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-    @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    @Test public void testRollMethod() {
+
+        int expected = 3;
+        int result = Library.roll(3).size();
+        System.out.println(result+ "test message");
+
+        assertEquals(expected, result);
+
     }
+
 }
