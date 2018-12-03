@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,26 +21,28 @@ public class Linter {
 
     public static int semicolonLinter(Path fileToLinter){
         int errorCount = 0;
-        Charset charset = Charset.forName("US-ASCII");
+
         try{
-            BufferedReader reader = Files.newBufferedReader(fileToLinter, charset);
-            String nextLine;
+            BufferedReader reader = Files.newBufferedReader(fileToLinter);
+            String nextLine = "";
 
             int lineNumber = 0;
 
 
-            while((nextLine = reader.readLine()) != null){
-                lineNumber++;
-                if(!nextLine.isEmpty()
-                    && !nextLine.endsWith("{")
-                    && !nextLine.endsWith("}")
-                    && !nextLine.contains("if")
-                    && !nextLine.contains("else")){
-                    System.out.println("Line " + lineNumber + ": Missing semicolon.");
-                    errorCount++;
-                }
+            while(nextLine != null) {
+                    if (!nextLine.isEmpty()
+                            && !nextLine.endsWith("{")
+                            && !nextLine.endsWith("}")
+                            && !nextLine.contains("if")
+                            && !nextLine.contains("else")
+                            && !nextLine.endsWith(";")) {
+                        System.out.println("Line " + lineNumber + ": Missing semicolon.");
+                        errorCount++;
 
-            }
+                    }
+                    nextLine = reader.readLine();
+                    lineNumber++;
+                }
 
 
         }
