@@ -49,4 +49,17 @@ public class Library {
 
     }
 
+    public static int[] lowestAverageArray(int[][] inputNestedArray){
+
+        int lowestArrayIndex = 0;
+
+        for (int i = 1; i < inputNestedArray.length; i++){
+            if(calculateAverageOfArray(inputNestedArray[i]) < calculateAverageOfArray(inputNestedArray[lowestArrayIndex])){
+                lowestArrayIndex = i;
+            }
+        }
+        return inputNestedArray[lowestArrayIndex];
+    }
+
+
 }

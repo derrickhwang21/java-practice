@@ -31,8 +31,23 @@ public class LibraryTest {
         int[] testArrayOne = {1,2,3,4,5};
         double expected = 15 / 5;
 
-        
+
         assertEquals(expected, Library.calculateAverageOfArray(testArrayOne), 0);
+
+    }
+
+    @Test public void testLowestAverageArray() {
+
+        int[][] weeklyMonthTemperatures = {
+                {1, 2, 3, 4, 5, 6, 7},
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+        };
+        int [] expected =  {1, 2, 3, 4, 5, 6, 7};
+
+
+        assertArrayEquals(expected, Library.lowestAverageArray(weeklyMonthTemperatures));
 
     }
 
