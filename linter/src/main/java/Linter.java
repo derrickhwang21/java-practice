@@ -20,14 +20,15 @@ public class Linter {
         semicolonLinter(fileToLinter);
     }
 
-    public static void semicolonLinter(Path fileToLinter){
-
+    public static int semicolonLinter(Path fileToLinter){
+        int errorCount = 0;
         Charset charset = Charset.forName("US-ASCII");
         try{
             BufferedReader reader = Files.newBufferedReader(fileToLinter, charset);
             String nextLine;
 
             int lineNumber = 0;
+
 
             while((nextLine = reader.readLine()) != null){
                 lineNumber++;
@@ -37,21 +38,20 @@ public class Linter {
                     && !nextLine.contains("if")
                     && !nextLine.contains("else")){
                     System.out.println("Line " + lineNumber + ": Missing semicolon.");
+                    errorCount++;
                 }
 
             }
 
+
         }
+
         catch(IOException e){
-            System.out.println(e);
+
         }
 
 
-
-
-
-
-
+        return errorCount;
     }
 
 
