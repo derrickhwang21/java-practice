@@ -6,28 +6,60 @@ import java.util.*;
 public class Library {
 
 
-    public static ArrayList<Integer> roll(int n) {
+    public static void main(String[] args){
+        System.out.println(Arrays.toString(roll(10)));
+    }
+
+    public static int [] roll(int n) {
+
+        int[] rollResultArray = new int[n];
         Random randomRoll = new Random();
-        int rolledDie = randomRoll.nextInt(6) + 1;
-        ArrayList<Integer> rollResultArray = new ArrayList<Integer>();
 
-        for (int i = 0; i < n; i++) {        System.out.println(rollResultArray + "test message");
-
-            rollResultArray.add(rolledDie);
+        for (int i = 0; i < n; i++) {
+            int rolledDie = randomRoll.nextInt(6) + 1;
+            rollResultArray[i] = rolledDie;
         }
     return rollResultArray;
     }
 
-    public static boolean containsDuplicates(String[] x, String[] y){
-        String[] inputArrayOne = x;
-        String[] inputArrayTwo = y;
-        for (int i = 0; i < inputArrayOne.length; i++){
-            String indexValueOfInputArrayOne = inputArrayOne[i];
-            for (int j = 0; j < inputArrayTwo.length; j++){
-                if (indexValueOfInputArrayOne.equals(inputArrayTwo[j]));
+
+
+    public static boolean containsDuplicates(String[] inputArray){
+       boolean duplicates = false;
+
+        for (int i = 0; i < inputArray.length; i++){
+            for (int j = i + 1; j < inputArray.length; j++){
+                if (j != i && inputArray[j] == inputArray[i])
+                    duplicates = true;
+            }
+
+        }
+        return duplicates;
+    }
+
+    public static double calculateAverageOfArray(int[] inputArray){
+        int aggregate = 0;
+
+        for (int i = 0; i < inputArray.length; i++){
+            aggregate += inputArray[i];
+        }
+
+        double average = (double) aggregate / inputArray.length;
+        return average;
+
+    }
+
+    public static int[] lowestAverageArray(int[][] inputNestedArray){
+
+        int lowestArrayIndex = 0;
+
+        for (int i = 1; i < inputNestedArray.length; i++){
+            if(calculateAverageOfArray(inputNestedArray[i]) < calculateAverageOfArray(inputNestedArray[lowestArrayIndex])){
+                lowestArrayIndex = i;
             }
         }
-        return true;
+        return inputNestedArray[lowestArrayIndex];
     }
+
 
 }
