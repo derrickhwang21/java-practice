@@ -4,9 +4,9 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class BitmapTest {
+public class AppTest {
     @Test public void testAppHasAGreeting() {
-        Bitmap classUnderTest = new Bitmap();
+        App classUnderTest = new App();
         assertNotNull("app should have a greeting", classUnderTest.getGreeting());
     }
 }
