@@ -24,8 +24,6 @@ public class Library {
 
 
 
-
-
     public static boolean containsDuplicates(String[] inputArray){
        boolean duplicates = false;
 
@@ -37,6 +35,18 @@ public class Library {
 
         }
         return duplicates;
+    }
+
+    public static double calculateAverageOfArray(int[] inputArray){
+        int aggregate = 0;
+
+        for (int i = 0; i < inputArray.length; i++){
+            aggregate += inputArray[i];
+        }
+
+        double average = (double) aggregate / inputArray.length;
+        return average;
+
     }
 
 }
