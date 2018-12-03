@@ -1,5 +1,5 @@
 import java.lang.*;
-
+import java.util.Random;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -16,14 +16,14 @@ public class Main {
         int turtleCount = 0;
         System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount)+ ".");
 
-        flipNHeads(1);
+        flipNHeads(2);
 
         clock();
 
     }
 
     public static String pluralize(String firstParam, int secondParam){
-        if (secondParam <= 1){
+        if (secondParam > 0 && secondParam < 2){
              return firstParam;
         }
         else {
@@ -34,18 +34,25 @@ public class Main {
 
 
     public static void flipNHeads(int numberOfTimesFlipped) {
-        for (int i = 0; i < numberOfTimesFlipped; i++) {
-            int tails = 0;
-            int heads =0;
-            if (Math.random() < 0.5) {
+
+        Random r = new Random();
+        double nextRandom = r.nextDouble();
+        int tails = 0;
+        int heads =0;
+
+        while (heads < numberOfTimesFlipped){
+            if (nextRandom < 0.5) {
                 tails++;
+                heads = 0;
                 System.out.println("tails");
             } else {
                 heads++;
                 System.out.println("heads");
             }
-            System.out.println("It took " + (tails + heads) + " to flip " + heads + " head in a row.");
+            nextRandom = r.nextDouble();
+
         }
+        System.out.println("It took " + (tails + heads) + "flips to flip " + heads + " head in a row.");
     }
 
     public static void clock() {
