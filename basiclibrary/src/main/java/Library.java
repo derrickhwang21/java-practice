@@ -62,4 +62,82 @@ public class Library {
     }
 
 
+    /**
+     * Section for Lab -03
+     * Maps and File I/O
+     *
+     */
+
+    public static int getMaxValue(HashSet<Integer> element) {
+        return Collections.max(element);
+    }
+
+    public static int getMinValue(HashSet<Integer> element) {
+        return Collections.min(element);
+    }
+
+
+    public static HashSet<Integer> getMissingElement(int[][] dimensionalData) {
+
+        HashSet<Integer> missingElement = new HashSet();
+
+        for (int[] arrayOfInts : dimensionalData) {
+            for (int value : arrayOfInts) {
+                if (!missingElement.contains(value)) {
+                    missingElement.add(value);
+                }
+            }
+        }
+        return missingElement;
+    }
+
+    public static List<String> getUniqueValue(int[][] dimensionalDataArray) {
+        HashSet<Integer> missingElement = getMissingElement(dimensionalDataArray);
+        List<String> outputList = new ArrayList<>();
+
+        int maxValue = getMaxValue(missingElement);
+        int minValue = getMinValue(missingElement);
+
+
+        for (int i = minValue; i <= maxValue; i++) {
+            if (!missingElement.contains(i)) {
+                outputList.add("Never saw temperature: " + i);
+            }
+        }
+        return outputList;
+    }
+
+
+
 }
+
+//    public static void List <String> tally (List<String> votesParameter){
+//        Map<String, Integer> votesMap = new HashMap<>();
+//
+//        for(String candidate : votesParameter){
+//            if(! votesMap.containsKey(candidate)){
+//                votesMap.put(candidate, 1);
+//            }
+//            else{
+//                int vote = votesMap.get(candidate);
+//                vote++;
+//
+//                votesMap.put(candidate, vote);
+//            }
+//        }
+//
+//        List <String> mostVotes = new ArrayList<>();
+//        for (Map.Entry<String, Integer> element : votesMap.entrySet()){
+//            if (element.getValue() == Collections.max(votesMap.values())){
+//
+//                mostVotes.add(element.getKey()) ;
+//            }
+//            System.out.println(mostVotes);
+//        }
+//
+//
+//    }
+
+
+
+
