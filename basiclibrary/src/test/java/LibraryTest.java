@@ -115,6 +115,24 @@ public class LibraryTest {
 
     }
 
+    @Test public void testTally() {
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String expectedResult = "Bush received the most votes!";
+
+        assertEquals("Strings should be the same", expectedResult, Library.tally(votes));
+    }
+
+
 
 
 
