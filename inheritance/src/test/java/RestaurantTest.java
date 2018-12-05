@@ -5,9 +5,43 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class RestaurantTest {
-    @Test public void testSomeLibraryMethod() {
-        Restaurant classUnderTest = new Restaurant();
-            System.out.println(classUnderTest.toString());
-//        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    @Test public void testGetName() {
+        Restaurant r = new Restaurant("Skippy's", 5,"$$$");
+
+        assertEquals("Skippy's", r.getName());
+    }
+
+    @Test public void testToStringAuthor() {
+        Restaurant r = new Restaurant("Skippy's", 5,"$$$");
+
+        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toStringRestaurant());
+    }
+
+    @Test public void testToStringAuthor2() {
+        Review r = new Review("", "Steve",5);
+
+        assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toStringReview());
+    }
+    @Test public void testToStringAuthor3() {
+        Review r = new Review("only ok", "",5);
+
+        assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toStringReview());
+    }
+
+    @Test public void testToStringRestaurant() {
+        Restaurant r = new Restaurant("Skippy's", 5,"$$$");
+
+        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toStringRestaurant());
+    }
+
+    @Test public void testToStringRestaurant2() {
+        Restaurant r = new Restaurant("Subway", 1,"$$");
+
+        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toStringRestaurant());
+    }
+    @Test public void testToStringRestaurant3() {
+        Restaurant r = new Restaurant("McDonald's", 2,"$$");
+
+        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toStringRestaurant());
     }
 }
