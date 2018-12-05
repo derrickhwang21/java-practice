@@ -21,9 +21,11 @@ public class Review {
         return this.stars;
     }
 
-    public String toStringReview(){
+    public String toString(){
         String str = "Body: " + this.body + " Author: " +this.author + " Stars: " + this.stars;
         return str;
     }
+
+
 
 }

@@ -14,34 +14,60 @@ public class RestaurantTest {
     @Test public void testToStringAuthor() {
         Restaurant r = new Restaurant("Skippy's", 5,"$$$");
 
-        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toStringRestaurant());
+        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
     }
 
     @Test public void testToStringAuthor2() {
         Review r = new Review("", "Steve",5);
 
-        assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toStringReview());
+        assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toString());
     }
     @Test public void testToStringAuthor3() {
         Review r = new Review("only ok", "",5);
 
-        assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toStringReview());
+        assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toString());
     }
 
     @Test public void testToStringRestaurant() {
         Restaurant r = new Restaurant("Skippy's", 5,"$$$");
 
-        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toStringRestaurant());
+        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
     }
 
     @Test public void testToStringRestaurant2() {
         Restaurant r = new Restaurant("Subway", 1,"$$");
 
-        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toStringRestaurant());
+        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
     }
     @Test public void testToStringRestaurant3() {
         Restaurant r = new Restaurant("McDonald's", 2,"$$");
 
-        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toStringRestaurant());
+        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
     }
+
+    @Test public void testAddReview() {
+        Restaurant r = new Restaurant("Chili's",2,"$$");
+        r.addReview(new Review("meh", "Mr.Meh", 2));
+
+        assertEquals("Should be 1", 1, r.reviewsList.size());
+
+    }
+
+    @Test public void testAddReview2() {
+        Restaurant r = new Restaurant("Chili's",2,"$$");
+
+        r.addReview(new Review("meh", "Mr.Meh", 2));
+        assertEquals( 1, r.reviewsList.size());
+
+        r.addReview(new Review("meh2", "Mr.Meh2", 2));
+        assertEquals( 2, r.reviewsList.size());
+
+        r.addReview(new Review("meh3", "Mr.Meh", 3));
+        assertEquals( 3, r.reviewsList.size());
+
+    }
+
+
+
+
 }
