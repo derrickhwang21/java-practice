@@ -21,7 +21,7 @@ Output:
   Never saw temperature: 69`
 
 ## Library Class Description
-The bitmap class I made contains five transformations.
+The Library class
 1. getMaxValue() - Returns highest integer within a hashet
 2. getMinValue() - Returns the lowest integer within a hashet
 3. getMissingElement() - Using an iterative method, find the value of not present during the iteration between and adding the resulting missing values into a new instance of hashet to return
