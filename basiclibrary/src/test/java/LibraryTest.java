@@ -58,6 +58,24 @@ public class LibraryTest {
      * Assertion tests for method Library.getMinValue
      * Assertion tests for method Library.getMaxValue
      */
+    @Test public void testGetMaxMinAbsentValues() {
+        int[][] test2DArray = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57},
+        };
+
+        List<String> testArrayList = new ArrayList<>();
+        testArrayList.add("High: 72");
+        testArrayList.add("Low: 51");
+        testArrayList.add("Never saw temperature: 63");
+        testArrayList.add("Never saw temperature: 67");
+        testArrayList.add("Never saw temperature: 68");
+        testArrayList.add("Never saw temperature: 69");
+
+        assertEquals("Array lists should be the same", testArrayList, Library.getUniqueValue(test2DArray));
+    }
 
     @Test public void testGetMaxValue() {
 
