@@ -97,6 +97,9 @@ public class Library {
         int minValue = getMinValue(missingElement);
 
 
+        outputList.add("High: " + maxValue);
+        outputList.add("Low: " + minValue);
+
         for (int i = minValue; i <= maxValue; i++) {
             if (!missingElement.contains(i)) {
                 outputList.add("Never saw temperature: " + i);
@@ -104,6 +107,8 @@ public class Library {
         }
         return outputList;
     }
+
+
 
 
     public static String tally(List<String> votesParameter) {
