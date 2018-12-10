@@ -9,10 +9,7 @@ public class App {
 
     public static void main(String[] args){
 
-        /**
-         * Default test condition to still make sure the gradle test is still running properly
-         */
-//        System.out.println(new App().getGreeting());
+
 
         /**
          * "Class File"
@@ -59,12 +56,18 @@ public class App {
 
         Bitmap bmp = new Bitmap(imagePath);
         Bitmap bmpHorizontal = new Bitmap(imagePath);
+        Bitmap bmpInverse = new Bitmap(imagePath);
+        Bitmap bmpBlue = new Bitmap(imagePath);
 
         bmp.flipVertically();
         bmpHorizontal.flipHorizontally();
+        bmpInverse.inverse();
+        bmpBlue.addBlueBorder();
 
-        bmp.save(FileSystems.getDefault().getPath("resources", "test_after.bmp"));
+        bmp.save(FileSystems.getDefault().getPath("resources", "test_vertical.bmp"));
         bmpHorizontal.save(FileSystems.getDefault().getPath("resources", "test_horizontal.bmp"));
+        bmpInverse.save(FileSystems.getDefault().getPath("resources", "test_inverse.bmp"));
+        bmpBlue.save(FileSystems.getDefault().getPath("resources", "test_border.bmp"));
 
 
     }
