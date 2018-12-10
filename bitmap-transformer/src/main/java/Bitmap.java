@@ -1,9 +1,9 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+
 
 /**
  * "getRGB"
@@ -73,20 +73,15 @@ public class Bitmap {
 
     public void flipVertically() {
 
-
         for ( int i = 0; i < this.imageData.getHeight(); i++)
             for (int j = 0; j < this.imageData.getWidth() / 2; j++) {
                 int temp = this.imageData.getRGB(i, j);
                 this.imageData.setRGB(i, j, this.imageData.getRGB(i, this.imageData.getWidth() - j - 1));
                 this.imageData.setRGB(i, this.imageData.getWidth() - j - 1, temp);
             }
-
-
     }
 
     public void flipHorizontally() {
-
-
 
         for ( int i = 0; i < this.imageData.getHeight() / 2; i++)
             for (int j = 0; j < this.imageData.getWidth(); j++) {
@@ -94,38 +89,45 @@ public class Bitmap {
                 this.imageData.setRGB(i, j, this.imageData.getRGB(this.imageData.getHeight() - i - 1, j));
                 this.imageData.setRGB(this.imageData.getWidth() - i - 1,j , temp);
             }
-
-
     }
 
-    public int[] darken() {
-        for (int i = 0; i < this.imageData.getHeight(); i++) {
-            for (int j = 0; j < this.imageData.getWidth(); j++) {
-                int pixel = this.imageData.getRGB(i, j);
-                int alpha = (pixel >> 24) & 0xff;
-                int red = (pixel >> 16) & 0xff + 150;
-                int green = (pixel >> 8) & 0xff + 150;
-                int blue = pixel & 0xff + 150;
-                pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
-                this.imageData.setRGB(i, j, pixel);
+
+
+
+    public void addBlueBorder() {
+
+        int height = this.imageData.getHeight();
+        int width = this.imageData.getWidth();
+
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < width; j++) {
+                if(i < 5 || i + 5 >= height || j < 5 || j + 5 >= width) {
+                    this.imageData.setRGB(j, i, Color.blue.getRGB());
+                }
             }
         }
-        int[] bitmapDimensions = {this.imageData.getHeight(), this.imageData.getWidth()};
-
-        return bitmapDimensions;
     }
+
+
+
+    public void inverse(){
+        for (int i = 0; i < this.imageData.getHeight(); i++){
+            for (int j = 0; j < this.imageData.getWidth(); j++){
+                int temp = 0xFFFFFF - this.imageData.getRGB(j, i);
+                this.imageData.setRGB(j, i, temp);
+            }
+        }
+    }
+
 
 
     public boolean save(Path savePath){
-
         try{
             ImageIO.write(imageData, "bmp", savePath.toFile());
 
         } catch (IOException e){
             System.out.println(e);
         }
-
-
         return false;
     }
 }
