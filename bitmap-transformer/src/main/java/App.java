@@ -57,14 +57,17 @@ public class App {
 
         Path imagePath = FileSystems.getDefault().getPath("resources", "test.bmp");
 
-        Bitmap bmp = new Bitmap(imagePath);
-        Bitmap bmpHorizontal = new Bitmap(imagePath);
+//        Bitmap bmp = new Bitmap(imagePath);
+//        Bitmap bmpHorizontal = new Bitmap(imagePath);
+        Bitmap bmpRotate = new Bitmap(imagePath);
 
-        bmp.flipVertically();
-        bmpHorizontal.flipHorizontally();
+//        bmp.flipVertically();
+//        bmpHorizontal.flipHorizontally();
+        bmpRotate.darken();
 
-        bmp.save(FileSystems.getDefault().getPath("resources", "test_after.bmp"));
-        bmpHorizontal.save(FileSystems.getDefault().getPath("resources", "test_horizontal.bmp"));
+//        bmp.save(FileSystems.getDefault().getPath("resources", "test_after.bmp"));
+//        bmpHorizontal.save(FileSystems.getDefault().getPath("resources", "test_horizontal.bmp"));
+        bmpRotate.save(FileSystems.getDefault().getPath("resources", "test_rotate.bmp"));
 
 
     }

@@ -45,13 +45,6 @@ public class RestaurantTest {
         assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
     }
 
-    @Test public void testAddReview() {
-        Restaurant r = new Restaurant("Chili's",2,"$$");
-        r.addReview(new Review("meh", "Mr.Meh", 2));
-
-        assertEquals("Should be 1", 1, r.reviewsList.size());
-
-    }
 
     @Test public void testAddReview2() {
         Restaurant r = new Restaurant("Chili's",2,"$$");
@@ -66,6 +59,23 @@ public class RestaurantTest {
         assertEquals( 3, r.reviewsList.size());
 
     }
+
+    @Test public void testUpdateStars() {
+        Restaurant r = new Restaurant("Chili's",2,"$$");
+
+        r.updateStars(new Review("meh", "Mr.Meh", 4));
+        System.out.print(r);
+//        assertEquals( 3, r.reviewsList.size());
+
+//        r.addReview(new Review("meh2", "Mr.Meh2", 2));
+//        assertEquals( 2, r.reviewsList.size());
+//
+//        r.addReview(new Review("meh3", "Mr.Meh", 3));
+//        assertEquals( 3, r.reviewsList.size());
+
+    }
+
+
 
 
 

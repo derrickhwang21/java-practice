@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -58,7 +59,6 @@ public class Bitmap {
 
     public Bitmap(Path imagePath){
         this.path = imagePath;
-
         BufferedImage img = null;
         try{
             img = ImageIO.read(imagePath.toFile());
@@ -68,6 +68,8 @@ public class Bitmap {
 
             }
         }
+
+
 
     public void flipVertically() {
 
@@ -86,16 +88,32 @@ public class Bitmap {
 
 
 
-        for ( int i = 0; i < this.imageData.getHeight(); i++)
-            for (int j = 0; j < this.imageData.getWidth() / 2; j++) {
+        for ( int i = 0; i < this.imageData.getHeight() / 2; i++)
+            for (int j = 0; j < this.imageData.getWidth(); j++) {
                 int temp = this.imageData.getRGB(i, j);
-                this.imageData.setRGB(i, j, this.imageData.getRGB(i, this.imageData.getWidth() - j - 1));
-                this.imageData.setRGB(i, this.imageData.getWidth() - j - 1, temp);
+                this.imageData.setRGB(i, j, this.imageData.getRGB(this.imageData.getHeight() - i - 1, j));
+                this.imageData.setRGB(this.imageData.getWidth() - i - 1,j , temp);
             }
 
 
     }
 
+    public int[] darken() {
+        for (int i = 0; i < this.imageData.getHeight(); i++) {
+            for (int j = 0; j < this.imageData.getWidth(); j++) {
+                int pixel = this.imageData.getRGB(i, j);
+                int alpha = (pixel >> 24) & 0xff;
+                int red = (pixel >> 16) & 0xff + 150;
+                int green = (pixel >> 8) & 0xff + 150;
+                int blue = pixel & 0xff + 150;
+                pixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
+                this.imageData.setRGB(i, j, pixel);
+            }
+        }
+        int[] bitmapDimensions = {this.imageData.getHeight(), this.imageData.getWidth()};
+
+        return bitmapDimensions;
+    }
 
 
     public boolean save(Path savePath){
@@ -104,7 +122,7 @@ public class Bitmap {
             ImageIO.write(imageData, "bmp", savePath.toFile());
 
         } catch (IOException e){
-
+            System.out.println(e);
         }
 
 
