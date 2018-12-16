@@ -6,48 +6,61 @@ import static org.junit.Assert.*;
 
 public class RestaurantTest {
     @Test public void testGetName() {
-        Restaurant r = new Restaurant("Skippy's", 5,"$$$");
+        Restaurant r = new Restaurant("Skippy's", "$$$");
 
         assertEquals("Skippy's", r.getName());
     }
 
-    @Test public void testToStringAuthor() {
-        Restaurant r = new Restaurant("Skippy's", 5,"$$$");
 
-        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
+    /**
+     * Restaurant Class - toString() method test
+     */
+
+    @Test public void testToStringRestaurant() {
+        Restaurant r = new Restaurant("Skippy's", "$$$");
+
+        assertEquals("\nName: " + r.getName() + "\nNumber of Stars: No ratings yet " + "\nPrice Category: " + r.getPriceCategory(),r.toString());
     }
 
-    @Test public void testToStringAuthor2() {
+    @Test public void testToStringRestaurant2() {
+        Restaurant r = new Restaurant("Subway", "$$");
+
+        assertEquals("\nName: " + r.getName() + "\nNumber of Stars: No ratings yet " + "\nPrice Category: " + r.getPriceCategory(),r.toString());
+    }
+    @Test public void testToStringRestaurant3() {
+        Restaurant r = new Restaurant("McDonald's", "$$");
+
+        assertEquals("\nName: " + r.getName() + "\nNumber of Stars: No ratings yet " + "\nPrice Category: " + r.getPriceCategory(),r.toString());
+    }
+
+    /**
+     * test Review Class for toString method
+     *
+     */
+
+
+    @Test public void testToStringEmptyBodyReview() {
         Review r = new Review("", "Steve",5);
 
         assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toString());
     }
-    @Test public void testToStringAuthor3() {
+    @Test public void testToStringReviewEmptyAuthor() {
         Review r = new Review("only ok", "",5);
 
         assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toString());
     }
+    @Test public void testToStringReview() {
+        Review r = new Review("only ok", "Steve",5);
 
-    @Test public void testToStringRestaurant() {
-        Restaurant r = new Restaurant("Skippy's", 5,"$$$");
-
-        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
+        assertEquals("Body: " + r.getBody() + " Author: " + r.getAuthor()+ " Stars: " + r.getStars(),r.toString());
     }
 
-    @Test public void testToStringRestaurant2() {
-        Restaurant r = new Restaurant("Subway", 1,"$$");
-
-        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
-    }
-    @Test public void testToStringRestaurant3() {
-        Restaurant r = new Restaurant("McDonald's", 2,"$$");
-
-        assertEquals("Name: " + r.getName() + " Number of Stars: " + r.getNumberOfStars()+ " Price Category: " + r.getPriceCategory(),r.toString());
-    }
-
-
-    @Test public void testAddReview2() {
-        Restaurant r = new Restaurant("Chili's",2,"$$");
+    /**
+     * Add Review test for class Review
+     *
+     */
+    @Test public void testAddReview() {
+        Restaurant r = new Restaurant("Chili's","$$");
 
         r.addReview(new Review("meh", "Mr.Meh", 2));
         assertEquals( 1, r.reviewsList.size());
@@ -60,18 +73,22 @@ public class RestaurantTest {
 
     }
 
+
+    /**
+     * update stars rating 
+     */
     @Test public void testUpdateStars() {
-        Restaurant r = new Restaurant("Chili's",2,"$$");
+        Restaurant r = new Restaurant("Chili's","$$");
 
-        r.updateStars(new Review("meh", "Mr.Meh", 4));
-        System.out.print(r);
-//        assertEquals( 3, r.reviewsList.size());
+        r.addReview(new Review("meh", "Mr.Meh", 4));
 
-//        r.addReview(new Review("meh2", "Mr.Meh2", 2));
-//        assertEquals( 2, r.reviewsList.size());
-//
-//        r.addReview(new Review("meh3", "Mr.Meh", 3));
-//        assertEquals( 3, r.reviewsList.size());
+        r.addReview(new Review("meh2", "Mr.Meh2", 2));
+        assertEquals( 3, r.getNumberOfStars());
+        r.addReview(new Review("meh3", "Mr.Meh3", 1));
+        assertEquals( 2, r.getNumberOfStars());
+        r.addReview(new Review("meh4", "Mr.Meh4", 5));
+        assertEquals( 3, r.getNumberOfStars());
+
 
     }
 

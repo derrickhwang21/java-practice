@@ -1,12 +1,12 @@
 public class Review {
     private String body;
     private String author;
-    private int stars;
+    private int reviewStars;
 
     public Review(String body, String author, int stars){
         this.body = body;
         this.author = author;
-        this.stars = stars;
+        this.reviewStars = stars;
     }
 
     public String getBody(){
@@ -18,11 +18,11 @@ public class Review {
     }
 
     public int getStars(){
-        return this.stars;
+        return this.reviewStars;
     }
 
     public String toString(){
-        String str = "Body: " + this.body + " Author: " +this.author + " Stars: " + this.stars;
+        String str = "Body: " + this.body + " Author: " +this.author + " Stars: " + this.reviewStars;
         return str;
     }
 

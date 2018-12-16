@@ -14,9 +14,9 @@ public class Restaurant {
 
 
 
-    public Restaurant(String name, int numberOfStars, String priceCategory) {
+    public Restaurant(String name, String priceCategory) {
         this.name = name;
-        this.numberOfStars = numberOfStars;
+        this.numberOfStars = -1;
         this.priceCategory = priceCategory;
         this.reviewsList = new LinkedList();
         this.starRatings = new ArrayList<>();
@@ -39,18 +39,19 @@ public class Restaurant {
     public String toString() {
         String restaurantRating;
         if (numberOfStars < 0) {
-            restaurantRating = "restaurant hasn't been rated yet";
+            restaurantRating = "No ratings yet ";
         }else{
                 restaurantRating = String.valueOf((this.numberOfStars));
             }
 
-            String str = "Name: " + this.name + " Number of Stars: " + restaurantRating
-                    + " Price Category: " + this.priceCategory;
+            String str = "\nName: " + this.name + "\nNumber of Stars: " + restaurantRating
+                    + "\nPrice Category: " + this.priceCategory;
             for (Review review : reviewsList) {
                 str += review.toString();
             }
             return str;
         }
+
 
         public void addReview (Review review){
             reviewsList.add(review);
