@@ -75,7 +75,7 @@ public class RestaurantTest {
 
 
     /**
-     * update stars rating 
+     * update stars rating
      */
     @Test public void testUpdateStars() {
         Restaurant r = new Restaurant("Chili's","$$");
